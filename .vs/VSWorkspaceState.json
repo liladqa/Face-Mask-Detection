@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\data"
+    "\\data",
+    "\\src"
   ],
-  "SelectedNode": "\\Detector.ipynb",
+  "SelectedNode": "\\src\\main.py",
   "PreviewInSolutionExplorer": false
 }
