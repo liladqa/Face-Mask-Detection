@@ -1,6 +1,6 @@
 import base64
 import numpy as np
-from flask import Flask, request, render_template, make_response
+from flask import Flask, request, render_template, make_response, jsonify
 import cv2
 import image_processing
 
@@ -32,7 +32,7 @@ def detection():
         retval, buffer = cv2.imencode('.png', img)
         response = make_response(buffer.tobytes())
         response.headers['Content-Type'] = 'image/png'
-        return response
+        return jsonify({'msg': 'success', 'size': [img.shape[0], img.shape[1]]})
     else:
         return render_template('detection.html')
 
