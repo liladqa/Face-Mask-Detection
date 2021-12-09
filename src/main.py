@@ -14,7 +14,7 @@ def main():
 
 
 # detection
-@app.route('/detection', methods=['POST', 'GET'])
+@app.route('/detection.html', methods=['POST', 'GET'])
 def detection():
     if request.method == 'POST':
         uploaded_file = request.files['formFile']
@@ -28,11 +28,12 @@ def detection():
         #procesing image
         img = image_processing.show(img)
 
-        #send image
+        # send image
         retval, buffer = cv2.imencode('.png', img)
         response = make_response(buffer.tobytes())
         response.headers['Content-Type'] = 'image/png'
-        return jsonify({'msg': 'success', 'size': [img.shape[0], img.shape[1]]})
+
+        return response
     else:
         return render_template('detection.html')
 
