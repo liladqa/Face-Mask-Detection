@@ -14,6 +14,10 @@ app = Flask(__name__)
 def main():
     return render_template('main.html')
 
+@app.route('/about.html')
+def about():
+    return render_template('about.html')
+
 
 # detection
 @app.route('/detection.html', methods=['POST', 'GET'])
@@ -43,6 +47,7 @@ def detection():
         # response.headers['Content-Type'] = 'image/png'
         #
         # return response
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         img = Image.fromarray(img.astype("uint8"))
         rawBytes = io.BytesIO()
         img.save(rawBytes, "JPEG")
